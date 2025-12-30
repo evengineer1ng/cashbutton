@@ -22,11 +22,17 @@
   <p class="msg">Cashier has been notified — please wait 🙂</p>
 
   <script>
-    // auto-trigger as soon as the page loads
-    fetch("https://YOUR-WEBHOOK-URL/trigger", {
-      method: "POST",
-      mode: "no-cors"
-    }).catch(() => {});
+  (async () => {
+    try {
+      await fetch("https://YOUR-WEBHOOK-URL/trigger", {
+        method: "POST",
+        mode: "no-cors"
+      });
+      console.log("Alert sent");
+    } catch(e) {
+      console.log("Trigger failed", e);
+    }
+  })();
   </script>
 </body>
 </html>
